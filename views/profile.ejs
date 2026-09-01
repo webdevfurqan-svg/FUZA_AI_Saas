@@ -1,0 +1,53 @@
+<%- include('partials/head') %>
+<%- include('partials/navbar') %>
+
+<div class="profile-page">
+  <div class="profile-header">
+    <div class="profile-avatar"><%= user.name.charAt(0).toUpperCase() %></div>
+    <div>
+      <h2><%= user.name %></h2>
+      <p class="user-email"><%= user.email %></p>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label">Credits Remaining</span>
+      <span class="stat-value highlight"><%= user.credits %></span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Messages Used</span>
+      <span class="stat-value"><%= user.messagesUsed %></span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Current Plan</span>
+      <span class="stat-value plan-badge"><%= user.plan.toUpperCase() %></span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Member Since</span>
+      <span class="stat-value date"><%= user.createdAt.toDateString() %></span>
+    </div>
+  </div>
+
+  <div class="plan-info">
+    <h3>Subscription Plans</h3>
+    <div class="plans-container">
+      <div class="plan-box active-plan">
+        <div class="plan-header">
+          <strong>Free Plan</strong>
+          <span class="badge">Current</span>
+        </div>
+        <p>50 credits, one-time. Perfect for exploring the platform.</p>
+      </div>
+      <div class="plan-box disabled-plan">
+        <div class="plan-header">
+          <strong>Pro Plan</strong>
+          <span class="badge-coming">Coming Soon</span>
+        </div>
+        <p>Higher credit limits and priority support (no real payment needed in demo).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

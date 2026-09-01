@@ -1,0 +1,34 @@
+<%- include('partials/head') %>
+
+<div class="auth-wrapper">
+  <div class="auth-card">
+
+    <div class="auth-brand">
+      <h1 class="brand-title">FuzaAI</h1>
+      <p class="brand-tagline">Meet FuzaAI, your personal AI assistant</p>
+    </div>
+
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <form action="/login" method="POST" class="form-box">
+      <div class="input-group">
+        <label>Email address</label>
+        <input type="email" name="email" placeholder="name@domain.com" required>
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="••••••••" required>
+      </div>
+
+      <button type="submit" class="auth-submit-btn">Continue</button>
+    </form>
+
+    <p class="auth-switch">Don't have an account? <a href="/register">Sign up</a></p>
+
+  </div>
+</div>
+
+<%- include('partials/footer') %>

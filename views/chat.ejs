@@ -1,0 +1,51 @@
+<%- include('partials/head') %>
+<%- include('partials/navbar') %>
+
+<div class="chat-page">
+
+
+  <div class="chat-header">
+    <div class="credits-box">
+      Credits: <span id="creditsCount"><%= user.credits %></span>
+    </div>
+    <form action="/chat/new" method="POST">
+      <button type="submit" class="new-chat-btn">+ New Chat</button>
+    </form>
+  </div>
+
+  
+  <div class="chat-box" id="chatBox">
+    <% if (messages.length === 0) { %>
+
+      <div class="chat-hero">
+        <h1 class="hero-heading">Meet FuzaAI, your personal AI assistant</h1>
+        <p class="hero-subtext">Fuza-v1.0 •</p>
+      </div>
+    <% } else { %>
+      <% messages.forEach(function(msg) { %>
+        <% if (msg.role === 'user') { %>
+          <div class="bubble user-bubble"><%= msg.content %></div>
+        <% } else if (msg.role === 'assistant') { %>
+          <div class="bubble assistant-bubble"><%= msg.content %></div>
+        <% } %>
+      <% }); %>
+    <% } %>
+  </div>
+
+
+  <div class="chat-input-area">
+    
+    <input type="text" id="messageInput" placeholder="Ask Anything..." autocomplete="off">
+    <div class="input-right-actions">
+      <span class="model-badge">Fuza-v1.0 ▾</span>
+      <button id="sendBtn" class="send-circle-btn">↑</button>
+    </div>
+  </div>
+
+  <p id="errorMsg" class="error" style="display:none;"></p>
+
+</div>
+
+<script src="/js/chat.js"></script>
+
+<%- include('partials/footer') %>
